@@ -1,7 +1,5 @@
-package com.wd.springboothelloworld.controller;
+package com.wd.springboothelloworld.test2.controller;
 
-import com.wd.springboothelloworld.service.UserService;
-import com.wd.springboothelloworld.test1.service.UserTest1Service;
 import com.wd.springboothelloworld.test2.service.UserTest2Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,28 +17,12 @@ import org.springframework.web.bind.annotation.RestController;
  * All rights reserved.
  **/
 @RestController
-@RequestMapping("/user")
-public class UserController {
-    @Autowired
-    UserService userService;
-    @Autowired
-    UserTest1Service userTest1Service;
+@RequestMapping("/test2")
+public class UserTest2Controller {
     @Autowired
     UserTest2Service userTest2Service;
-
     @RequestMapping("/insert")
     public Integer insert(String name,Integer age){
-        return userService.insert(name, age);
-    }
-
-    @RequestMapping("/insertTest1")
-    public Integer insertTest1(String name,Integer age){
-        return userTest1Service.insert(name, age);
-    }
-
-    @RequestMapping("/insertTest2")
-    public Integer insertTest2(String name,Integer age){
         return userTest2Service.insert(name, age);
     }
-
 }

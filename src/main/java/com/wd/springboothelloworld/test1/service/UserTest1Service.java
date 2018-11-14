@@ -1,6 +1,7 @@
-package com.wd.springboothelloworld.service;
+package com.wd.springboothelloworld.test1.service;
 
-import com.wd.springboothelloworld.mapper.UserMapper;
+
+import com.wd.springboothelloworld.test1.mapper.UserTest1Mapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,16 +20,17 @@ import org.springframework.transaction.annotation.Transactional;
  **/
 @Service
 @Slf4j
-public class UserService {
+public class UserTest1Service {
     @Autowired
-    private UserMapper userMapper;
+    UserTest1Mapper userTest1Mapper;
 
     //指定事务管理器
-    @Transactional(transactionManager = "test3TransactionManager")
+//    @Transactional(transactionManager = "test1TransactionManager")
+    @Transactional()
     public int insert(String name,Integer age){
-
-        int result=userMapper.insert(name, age);
+        int result=userTest1Mapper.insert(name, age);
         log.info("##########result:{}##############",result);
+        int i=1/age;
         return result;
     }
 

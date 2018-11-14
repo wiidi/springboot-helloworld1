@@ -1,12 +1,10 @@
-package com.wd.springboothelloworld.mapper;
+package com.wd.springboothelloworld.test2.mapper;
 
 import com.wd.springboothelloworld.entity.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.stereotype.Component;
 
 /**
  * @Description:Mybatis
@@ -21,8 +19,8 @@ import org.springframework.stereotype.Component;
  **/
 //@Component
 //@MapperScan
-
-public interface UserMapper {
+@Mapper
+public interface UserTest2Mapper {
     //查询
     @Select("SELECT * FROM USER WHERE NAME = #{name}")
     User findByName(@Param("name") String name);

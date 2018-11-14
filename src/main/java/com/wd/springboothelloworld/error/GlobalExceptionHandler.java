@@ -21,7 +21,8 @@ import java.util.Map;
  **/
 //监控com.wd.springboothelloworld.controller下的所有方法，捕获异常
 //还可以深入研究
-@ControllerAdvice(basePackages = "com.wd.springboothelloworld.controller")
+//@ControllerAdvice(basePackages = "com.wd.springboothelloworld.controller")
+@ControllerAdvice(basePackages = "com.wd.springboothelloworld.aop")
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(RuntimeException.class)
