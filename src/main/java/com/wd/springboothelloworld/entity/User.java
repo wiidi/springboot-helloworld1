@@ -19,12 +19,13 @@ import lombok.extern.slf4j.Slf4j;
 public class User {
     private String name;
     private Integer age;
+    private Integer id;
 
-    //lombok 底层使用字节码ASM 修改字节码文件，生成get和set方法
-    public static void main(String[] args) {
-        User user = new User();
-        user.setName("wudi");
-        user.setAge(25);
-        log.info(user.toString());
-    }
+//    //lombok 底层使用字节码ASM 修改字节码文件，生成get和set方法
+//    public static void main(String[] args) {
+//        User user = new User();
+//        user.setName("wudi");
+//        user.setAge(25);
+//        log.info(user.toString());
+//    }
 }

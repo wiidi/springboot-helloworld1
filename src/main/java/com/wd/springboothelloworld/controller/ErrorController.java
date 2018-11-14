@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  * All rights reserved.
  **/
 @RestController
+@RequestMapping("error")
 public class ErrorController {
     @RequestMapping("/getUser")
     public String getUser(int i) {

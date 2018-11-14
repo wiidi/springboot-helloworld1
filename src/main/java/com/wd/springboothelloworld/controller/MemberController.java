@@ -3,6 +3,7 @@ package com.wd.springboothelloworld.controller;
 import com.wd.springboothelloworld.service.MemberService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,12 +20,17 @@ import org.springframework.web.bind.annotation.RestController;
  **/
 @RestController
 @Slf4j
+@RequestMapping("/member")
 //@EnableAutoConfiguration
 //@ComponentScan("com.wd.springboothelloworld.controller")
 public class MemberController {
     @Autowired
     MemberService memberService;
 
+    @Value("${name}")
+    private String name;
+    @Value("${http_url}")
+    private String http_url;
     //@RestController注解表示该类中的所有方法返回Json格式
     @RequestMapping("/memberIndex")
     public String memberIndex() {
@@ -38,7 +44,16 @@ public class MemberController {
         log.info("4");
         return result;
     }
-//    public static void main(String[] args) {
-//        SpringApplication.run(MemberController.class,args);
-//    }
+
+    @RequestMapping("/getName")
+    public String getName(){
+        return name;
+    }
+    @RequestMapping("/getHttpUrl")
+    public String getHttpUrl(){
+        return http_url;
+    }
+////    public static void main(String[] args) {
+////        SpringApplication.run(MemberController.class,args);
+////    }
 }

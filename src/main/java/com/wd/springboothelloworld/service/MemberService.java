@@ -1,6 +1,7 @@
 package com.wd.springboothelloworld.service;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 /**
@@ -18,6 +19,8 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class MemberService {
     //添加用户会发送邮件
+//    @Async //相当于这个方法重新开辟了一个线程进行执行，需要开启@EnableAsync
+    //思路：使用AOP技术，在运行时创建一个单独的线程执行
     public String addMemberAndEmail() {
         log.info("2");
     try{
