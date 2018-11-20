@@ -1,5 +1,7 @@
 package com.wd.springboothelloworld.controller;
 
+import com.github.pagehelper.PageInfo;
+import com.wd.springboothelloworld.entity.User;
 import com.wd.springboothelloworld.service.UserService;
 import com.wd.springboothelloworld.test1.service.UserTest1Service;
 import com.wd.springboothelloworld.test2.service.UserTest2Service;
@@ -41,6 +43,15 @@ public class UserController {
     @RequestMapping("/insertTest2")
     public Integer insertTest2(String name,Integer age){
         return userTest2Service.insert(name, age);
+    }
+
+    @RequestMapping("/select")//分页查询
+    /**
+     * 结果
+     * {"total":7,"list":[{"name":"wudi1","age":1,"id":0},{"name":"wudi3","age":0,"id":0}],"pageNum":1,"pageSize":2,"size":2,"startRow":1,"endRow":2,"pages":4,"prePage":0,"nextPage":2,"isFirstPage":true,"isLastPage":false,"hasPreviousPage":false,"hasNextPage":true,"navigatePages":8,"navigatepageNums":[1,2,3,4],"navigateFirstPage":1,"navigateLastPage":4,"lastPage":4,"firstPage":1}
+     */
+    public PageInfo<User> select(int page,int pageSize){
+        return userService.findUserList(page, pageSize);
     }
 
 }

@@ -1,10 +1,15 @@
 package com.wd.springboothelloworld.service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.wd.springboothelloworld.entity.User;
 import com.wd.springboothelloworld.mapper.UserMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * @Description:
@@ -32,4 +37,16 @@ public class UserService {
         return result;
     }
 
+    /**
+     * springboot整合pageHepler
+     * page 当前页数
+     * pageSize 当前展示数量
+     */
+    public PageInfo<User>findUserList(int page, int pageSize) {
+        //mysql 查询limit
+        PageHelper.startPage(page, pageSize);//地层实现原理改写语句
+        List<User> listUser =userMapper.findUserList();
+        PageInfo<User> pageInfoUserList=new PageInfo<User>(listUser);
+        return pageInfoUserList;
+    }
 }
