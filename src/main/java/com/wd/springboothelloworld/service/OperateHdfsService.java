@@ -4,7 +4,6 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.*;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.io.IOUtils;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
@@ -26,22 +25,10 @@ import java.util.zip.ZipInputStream;
  **/
 @Service
 public class OperateHdfsService {
-//
-//    @Value("${hdfs.hdfs-url}")
-    public String HDFS_url = "hdfs://10.96.14.58:8020";
-//    private String HDFS_url ;
-//
-//    @Value("${hdfs.hdfs_separator}")
-//    private String HDFS_separator;
+    public String HDFS_url = "hdfs://10.96.14.57:8020";
     public String HDFS_separator = "/";
-//
-//    @Value("${hdfs.hadoop-home-Dir}")
-//    private String hadoopHomeDir;
     public String hadoopHomeDir = "D:\\hadoop-2.7.3";
-
-//    @Value("${hdfs.default-fs}")
-//    private String defaultFS;
-    public String defaultFS = "hdfs://10.96.14.58:8020";
+    public String defaultFS = "hdfs://10.96.14.57:8020";
 
     public String getHDFS_url() {
         return HDFS_url;
@@ -51,6 +38,7 @@ public class OperateHdfsService {
 
         //需要在windows上安装hadoop-2.7.3
         System.setProperty("hadoop.home.dir", hadoopHomeDir);
+        System.setProperty("HADOOP_USER_NAME", "root");
     }
 
     public Configuration getConfiguration() {
@@ -202,11 +190,6 @@ public class OperateHdfsService {
     public String downloadFile(String remote, String local) {
         FileSystem fs = getFileSystem();
         fs.setVerifyChecksum(false);
-
-//        Configuration configuration = new Configuration();
-//
-//        FileSystem fs = new RawLocalFileSystem();
-//        fs.initialize(new URI(HDFS_url),configuration);
         try {
             fs.copyToLocalFile(new Path(remote), new Path(local));
 
@@ -310,7 +293,6 @@ public class OperateHdfsService {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     /**

@@ -1,0 +1,28 @@
+### 通过以下配置启用所有监控端点，默认情况下，这些端点是被禁用的
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+#spring配置
+spring:
+  datasource:
+    jdbc-url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+  profiles:
+    active: datasource1
+  application:
+      name: spring-boot-admin-server
+
+pagehelper:
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+  page-size-zero: true
+  helper-dialect: mysql
+
+name: wudi
+http_url: dev.wudi.com
+

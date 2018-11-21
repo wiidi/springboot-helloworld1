@@ -65,6 +65,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
+        <!--Actuator监控中心-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
 
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-log4j -->
         <!-- springboot log4j 技术-->
@@ -129,6 +135,10 @@
             <artifactId>hadoop-mapreduce-client-core</artifactId>
             <version>2.7.2</version>
         </dependency>
+
+
+
+
 
 	</dependencies>
 
